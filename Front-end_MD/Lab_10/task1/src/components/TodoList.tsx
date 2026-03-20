@@ -18,7 +18,7 @@ export function TodoList({ initialTodos = [] }: TodoListProps) {
     if (newTodo.trim()) {
       setTodos([
         ...todos,
-        { id: Date.now(), text: newTodo.trim(), completed: false }
+        { id: Math.random(), text: newTodo.trim(), completed: false }
       ]);
       setNewTodo("");
     }

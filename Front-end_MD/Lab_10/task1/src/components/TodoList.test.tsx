@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { TodoList } from "./TodoList";
@@ -7,7 +8,7 @@ describe("TodoList Component", () => {
     test("renders empty todo list", () => {
       render(<TodoList />);
       expect(screen.getByText("Todo List")).toBeInTheDocument();
-      expect(screen.getByText("0 todos (0 completed)")).toBeInTheDocument();
+      expect(screen.getByTestId("todo-count")).toHaveTextContent("0 todos (0 completed)");
     });
 
     test("renders with initial todos", () => {
@@ -16,7 +17,7 @@ describe("TodoList Component", () => {
       ];
       render(<TodoList initialTodos={initialTodos} />);
       expect(screen.getByText("Test todo")).toBeInTheDocument();
-      expect(screen.getByText("1 todos (0 completed)")).toBeInTheDocument();
+      expect(screen.getByTestId("todo-count")).toHaveTextContent("1 todos (0 completed)");
     });
   });
 
@@ -57,28 +58,28 @@ describe("TodoList Component", () => {
     });
   });
 
-  describe("Toggling todos", () => {
+  describe("Toggling and Deleting", () => {
     test("toggles todo completion status", async () => {
+      const user = userEvent.setup();
       const initialTodos = [{ id: 1, text: "Test", completed: false }];
       render(<TodoList initialTodos={initialTodos} />);
 
       const checkbox = screen.getByTestId("todo-checkbox");
-      await userEvent.click(checkbox);
+      await user.click(checkbox);
 
       const todoItem = screen.getByTestId("todo-item");
       expect(todoItem).toHaveClass("completed");
     });
-  });
 
-  describe("Deleting todos", () => {
     test("deletes a todo", async () => {
+      const user = userEvent.setup();
       const initialTodos = [
         { id: 1, text: "Delete me", completed: false }
       ];
       render(<TodoList initialTodos={initialTodos} />);
 
       const deleteButton = screen.getByTestId("delete-button");
-      await userEvent.click(deleteButton);
+      await user.click(deleteButton);
 
       expect(screen.queryByText("Delete me")).not.toBeInTheDocument();
     });
