@@ -2,7 +2,7 @@ function Settings(): JSX.Element {
   return (
     <div className="page settings-page">
       <h1>⚙️ Settings</h1>
-      <p>This page is also lazy-loaded!</p>
+      <p>This page is lazy-loaded!</p>
       <form className="settings-form">
         <div className="form-group">
           <label>Username</label>

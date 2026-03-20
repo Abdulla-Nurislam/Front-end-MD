@@ -1,15 +1,15 @@
 import { useState } from "react";
 
 function BuggyPage(): JSX.Element {
-  const [shouldThrow, setShouldThrow] = useState(false);
+  const [ shouldThrow, setShouldThrow ] = useState(false);
 
   if (shouldThrow) {
-    throw new Error("Intentional error for testing Error Boundary!");
+    throw new Error('Intentional error for testing Error Boundary!');
   }
 
   return (
     <div className="page buggy-page">
-      <h1>🐛 Buggy Page</h1>
+      <h1> Buggy Page</h1>
       <p>This page can simulate errors to test Error Boundary.</p>
       <div className="warning-card">
         <h3>⚠️ Warning</h3>

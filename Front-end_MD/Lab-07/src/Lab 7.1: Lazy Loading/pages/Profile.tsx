@@ -9,7 +9,7 @@ function Profile(): JSX.Element {
         <p className="role">Software Developer</p>
         <div className="profile-info">
           <div>
-            <strong>Location:</strong> New York, USA
+            <strong>Location:</strong> Nev York, USA
           </div>
           <div>
             <strong>Joined:</strong> January 2024
