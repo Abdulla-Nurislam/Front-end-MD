@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ResponsiveHeader } from './src/components/ResponsiveHeader';
 import { AdaptiveLayout, FeatureCard, StatsRow, ResponsiveImage } from './src/components/AdaptiveLayout';
@@ -16,8 +16,8 @@ export default function App() {
     <SafeAreaProvider>
       <ResponsiveHeader 
         title="Dashboard" 
-        leftAction={{ icon: 'menu', onPress: () => {} }} 
-        rightAction={{ icon: 'person', onPress: () => {} }} 
+        leftAction={{ icon: 'menu', onPress: () => Alert.alert('Navigation Menu Opened') }} 
+        rightAction={{ icon: 'person', onPress: () => Alert.alert('Profile Section Opened') }} 
       />
       <AdaptiveLayout
         content={

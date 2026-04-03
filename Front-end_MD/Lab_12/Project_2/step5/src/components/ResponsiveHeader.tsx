@@ -34,27 +34,20 @@ export function ResponsiveHeader({
   const isTablet = width >= 768;
 
   return (
-    <SafeAreaView style={[styles.safeArea, { paddingTop: 0 }]} edges={["top", "left", "right"]}>
+    <View style={[styles.safeArea, { paddingTop: insets.top }]}>
       <StatusBar
         barStyle="light-content"
         backgroundColor="#0066cc"
         translucent={Platform.OS === 'android'}
       />
-      <View
-        style={[
-          styles.header,
-          {
-            paddingTop: Platform.OS === 'android' ? insets.top : 0,
-            height: 56 + (Platform.OS === 'android' ? insets.top : 0),
-          }
-        ]}
-      >
+      <View style={styles.header}>
         <View style={styles.headerContent}>
           <View style={styles.headerLeft}>
             {leftAction && (
               <TouchableOpacity
                 style={styles.headerButton}
                 onPress={leftAction.onPress}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               >
                 <Ionicons name={leftAction.icon as any} size={24} color="#fff" />
               </TouchableOpacity>
@@ -78,6 +71,7 @@ export function ResponsiveHeader({
               <TouchableOpacity
                 style={styles.headerButton}
                 onPress={rightAction.onPress}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               >
                 <Ionicons name={rightAction.icon as any} size={24} color="#fff" />
               </TouchableOpacity>
@@ -85,7 +79,7 @@ export function ResponsiveHeader({
           </View>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
