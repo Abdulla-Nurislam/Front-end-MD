@@ -29,27 +29,34 @@ export function ResponsiveHeader({
   rightAction
 }: ResponsiveHeaderProps) {
   const insets = useSafeAreaInsets();
-  const { width, height } = useWindowDimensions();
-  const isLandscape = width > height;
+  const { width } = useWindowDimensions();
   const isTablet = width >= 768;
 
   return (
-    <View style={[styles.safeArea, { paddingTop: insets.top }]}>
+    <View style={[styles.safeArea, { zIndex: 100 }]}>
       <StatusBar
         barStyle="light-content"
         backgroundColor="#0066cc"
-        translucent={Platform.OS === 'android'}
+        translucent={true}
       />
-      <View style={styles.header}>
+      <View
+        style={[
+          styles.header,
+          {
+            paddingTop: insets.top,
+            height: 56 + insets.top,
+          }
+        ]}
+      >
         <View style={styles.headerContent}>
           <View style={styles.headerLeft}>
             {leftAction && (
               <TouchableOpacity
                 style={styles.headerButton}
                 onPress={leftAction.onPress}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                activeOpacity={0.6}
               >
-                <Ionicons name={leftAction.icon as any} size={24} color="#fff" />
+                <Ionicons name={leftAction.icon as any} size={28} color="#fff" />
               </TouchableOpacity>
             )}
           </View>
@@ -71,9 +78,9 @@ export function ResponsiveHeader({
               <TouchableOpacity
                 style={styles.headerButton}
                 onPress={rightAction.onPress}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                activeOpacity={0.6}
               >
-                <Ionicons name={rightAction.icon as any} size={24} color="#fff" />
+                <Ionicons name={rightAction.icon as any} size={28} color="#fff" />
               </TouchableOpacity>
             )}
           </View>

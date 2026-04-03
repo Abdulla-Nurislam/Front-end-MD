@@ -14,12 +14,26 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <ResponsiveHeader 
-        title="Dashboard" 
-        leftAction={{ icon: 'menu', onPress: () => Alert.alert('Navigation Menu Opened') }} 
-        rightAction={{ icon: 'person', onPress: () => Alert.alert('Profile Section Opened') }} 
-      />
       <AdaptiveLayout
+        header={
+          <ResponsiveHeader 
+            title="Dashboard" 
+            leftAction={{ 
+              icon: 'menu', 
+              onPress: () => {
+                console.log('Menu opened');
+                Alert.alert('Меню', 'Навигация открыта');
+              } 
+            }} 
+            rightAction={{ 
+              icon: 'person', 
+              onPress: () => {
+                console.log('Profile opened');
+                Alert.alert('Профиль', 'Настройки профиля');
+              } 
+            }} 
+          />
+        }
         content={
           <View style={styles.content}>
             <StatsRow stats={stats} />

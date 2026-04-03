@@ -26,7 +26,7 @@ export function AdaptiveLayout({
 
   return (
     <View style={styles.container}>
-      {header && <View style={styles.header}>{header}</View>}
+      {header && <View style={[styles.header, { zIndex: 100 }]}>{header}</View>}
       <View style={[
         styles.main,
         isLandscape && styles.mainLandscape,
