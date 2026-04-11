@@ -1,0 +1,11 @@
+# ignore node modules
+node_modules
+.DS_Store
+/dist
+.next
+*.docx
+*.pdf
+*AI_REPORT*
+*AI_Report*
+*.pages
+Ссылка*
