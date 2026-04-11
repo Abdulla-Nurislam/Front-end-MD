@@ -44,7 +44,7 @@ function NotificationsStack() {
 function ProfileStack() {
   return (
     <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: '#0066cc' }, headerTintColor: '#fff' }}>
-      <Stack.Screen name="ProfileMain" component={ProfileScreen} options={{ title: 'Profile' }} />
+      <Stack.Screen name="ProfileMain" component={ProfileScreen as any} options={{ title: 'Profile' }} />
       <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
     </Stack.Navigator>
   );
